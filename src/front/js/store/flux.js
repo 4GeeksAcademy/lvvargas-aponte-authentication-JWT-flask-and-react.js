@@ -13,10 +13,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			requestBody: {},
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
+			handleInputChange: (e) => {
+				const store = getStore();
+				setStore({requestBody: {...store.requestBody, [e.target.id]: e.target.value}})	
+			},
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
