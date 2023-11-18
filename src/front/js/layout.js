@@ -3,9 +3,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
-import { UserForm } from "./pages/UserForm";
-import { Demo } from "./pages/demo";
-import { Single } from "./pages/single";
+import { Home } from "./pages/home"
+import LoginForm from "./pages/loginForm";
+import SignupForm from "./pages/signupForm";
+import Private from "./pages/private";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -17,7 +18,7 @@ const Layout = () => {
     // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
     const basename = process.env.BASENAME || "";
 
-    if(!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL/ >;
+    if (!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL />;
 
     return (
         <div>
@@ -25,9 +26,10 @@ const Layout = () => {
                 <ScrollToTop>
                     <Navbar />
                     <Routes>
-                        <Route element={<UserForm />} path="/" />
-                        <Route element={<UserForm />} path="/signup" />
-                        <Route element={<Single />} path="/single/:theid" />
+                        <Route element={<Home />} path="/" />
+                        <Route element={<LoginForm />} path="/login" />
+                        <Route element={<SignupForm />} path="/signup" />
+                        <Route element={<Private />} path="/private" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
