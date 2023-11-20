@@ -6,17 +6,6 @@ const Private = () => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const checkTokenValidity = async () => {
-            const isValid = await actions.syncToken(); // Assuming syncToken checks and updates the token
-            if (!isValid) {
-                navigate('/login');
-            }
-        };
-
-        checkTokenValidity();
-    }, []);
-
     const handleGetJoke = async () => {
         const isAuthenticated = await actions.handlePrivateJoke();
         if (isAuthenticated) {
